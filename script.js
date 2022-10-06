@@ -1,40 +1,40 @@
 const loadFunct = () => {
-    const lines = 3;
+  const lines = 3;
 
-    // services
-    const flatToTable = (array, line) => {
-      let table = [];
-    
-      for (let arrayIndex = 0; arrayIndex < line; arrayIndex++) {
-        const tableLine = [];
-        for (let lineIndex = 0; lineIndex < line; lineIndex++) {
-          tableLine.push(array[lineIndex + arrayIndex * 3]);
-        }
-        table.push(tableLine);
+  // services
+  const flatToTable = (array, line) => {
+    let table = [];
+
+    for (let arrayIndex = 0; arrayIndex < line; arrayIndex++) {
+      const tableLine = [];
+      for (let lineIndex = 0; lineIndex < line; lineIndex++) {
+        tableLine.push(array[lineIndex + arrayIndex * 3]);
       }
-      return table;
-    };
-
-
-    const verifyArray = (...elements) => {
-        return(elements[0].every(element => element === elements[0][0]))
+      table.push(tableLine);
     }
+    return table;
+  };
 
+  const verifyArray = (...elements) => {
+    return elements[0].every((element) => element === elements[0][0]);
+  };
 
+  //console.log(verifyArray(["a", "b", "a"]))
 
-console.log(verifyArray(["a", "b", "a"]))
-
- const verifyer = (table, line ) => {
-
-    let verifySol = false 
+  const verifyer = (table, line) => {
+    let verifySol = false;
     // verify horizontal
-    for( let i = 0 ; i<line ; i++) {
-       // console.log(table[i])
+    for (let i = 0; i < line; i++) {
+   
+      console.log(table[i])
+      if(verifyArray(table[i])) {
+        verifySol = true
+      }
+      //console.log(verifyArray(table[i]))
     }
-    
-
-    console.log("verify END----")
- }
+    console.log("verify is" , verifySol)
+    console.log("verify END----");
+  };
 
   // create tic-tac-Toe map
   let toeMap = [];
@@ -62,18 +62,14 @@ console.log(verifyArray(["a", "b", "a"]))
     }
     mapFlat[leftPlaces[random] - 1] = player;
 
-    const readyTable = flatToTable(mapFlat, lines)
+    const readyTable = flatToTable(mapFlat, lines);
 
-    verifyer(readyTable, lines)
+    verifyer(readyTable, lines);
 
     //console.log(readyTable)
 
     //console.log(flatToTable(mapFlat, lines));
-
-
   });
-
-
 
   //console.log(mapFlat)
 
