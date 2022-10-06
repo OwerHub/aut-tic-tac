@@ -1,5 +1,7 @@
 const loadFunct = () => {
-  const lines = 3;
+    const lines = 3;
+    let verifySol = false;
+    let winnerIs  
 
   let verifyType ={
     horizontal: false,
@@ -8,7 +10,7 @@ const loadFunct = () => {
 }
 
 
-  // services
+  // --------services-----------
   const flatToTable = (array, line) => {
     let table = [];
 
@@ -23,20 +25,21 @@ const loadFunct = () => {
   };
 
   const verifyArray = (...elements) => {
-    return elements[0].every((element) => element === elements[0][0]);
+    let solution = elements[0].every((element) => element === elements[0][0])
+    if(solution){winnerIs = elements[0][0]}
+    return  solution;
   };
 
-  //console.log(verifyArray(["a", "b", "a"]))
+            //console.log(verifyArray(["a", "b", "a"]))
 
   const verifyer = (table, line) => {
-    let verifySol = false;
-  /*   let verifyType ={
-        horizontal: false,
-        vertical: false,
-        diagonal: false
-    } */
+            /*   let verifyType ={
+                    horizontal: false,
+                    vertical: false,
+                    diagonal: false
+                } */
 
-// verify horizontal
+// ---verify horizontal
     for (let i = 0; i < line; i++) {
       //console.log(table[i])             // this for I can see the table
       if(verifyArray(table[i])) {
@@ -45,7 +48,7 @@ const loadFunct = () => {
       }
     }
 
-    // verify vertical
+// -----verify vertical
     for (let index = 0; index < lines; index++) {
         const elementArray = table.map((line) => line[index])
         //console.log(elementArray)
@@ -55,7 +58,7 @@ const loadFunct = () => {
         }
     }
 
-    // verify diagonal
+// ------verify diagonal
 
     let diag1 = []
     let diag2 = []
@@ -74,12 +77,15 @@ const loadFunct = () => {
         verifyType.diagonal = true
     }
 
-    //console.log("diag1 is" , diag1)
-    //console.log("diag2 is" , diag2)
+                //console.log("diag1 is" , diag1)
+                //console.log("diag2 is" , diag2)
 
-    //console.log("verify is" , verifySol)
-    //console.log(verifyType)
-    //console.log("verify END----");
+                //console.log("verify is" , verifySol)
+                //console.log(verifyType)
+                //console.log("verify END----");
+
+
+    return verifySol
   };
 
   // create tic-tac-Toe map
@@ -107,9 +113,12 @@ const loadFunct = () => {
       player = "X";
     }
 
-    
-    mapFlat[leftPlaces[random] - 1] = player;
-
+    //console.log(verifySol)
+    //console.log(mapFlat)
+    if(!verifySol){
+        mapFlat[leftPlaces[random] - 1] = player;
+    }
+  
     const readyTable = flatToTable(mapFlat, lines);
 
     verifyer(readyTable, lines);
@@ -119,7 +128,10 @@ const loadFunct = () => {
 });
 
 console.table(flatToTable(mapFlat, lines));
- console.log(verifyType)
+if(verifySol){
+    console.log("Winner is: " +  winnerIs)
+}
+console.log(verifyType)
 
   //console.log(mapFlat);
 };
