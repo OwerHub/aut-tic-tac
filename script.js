@@ -25,13 +25,22 @@ const loadFunct = () => {
     let verifySol = false;
     // verify horizontal
     for (let i = 0; i < line; i++) {
-   
-      console.log(table[i])
+      console.log(table[i])             // this for I can see the table
       if(verifyArray(table[i])) {
+        console.log("vertical verify true")
         verifySol = true
       }
-      //console.log(verifyArray(table[i]))
     }
+
+    // verify vertical
+    for (let index = 0; index < lines; index++) {
+        const elementArray = table.map((line) => line[index])
+        if(verifyArray(elementArray)){
+            verifySol = true;
+            console.log("horizontal verify true")
+        }
+    }
+
     console.log("verify is" , verifySol)
     console.log("verify END----");
   };
