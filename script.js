@@ -23,25 +23,35 @@ const loadFunct = () => {
 
   const verifyer = (table, line) => {
     let verifySol = false;
-    // verify horizontal
+    let verifyType ={
+        horizontal: false,
+        vertical: false,
+        diagonal: false
+    }
+
+// verify horizontal
     for (let i = 0; i < line; i++) {
       console.log(table[i])             // this for I can see the table
       if(verifyArray(table[i])) {
-        console.log("vertical verify true")
+        verifyType.horizontal = true
         verifySol = true
       }
     }
 
+
+        //console.log("vertical")
     // verify vertical
     for (let index = 0; index < lines; index++) {
         const elementArray = table.map((line) => line[index])
+        //console.log(elementArray)
         if(verifyArray(elementArray)){
             verifySol = true;
-            console.log("horizontal verify true")
+            verifyType.vertical = true
         }
     }
 
-    console.log("verify is" , verifySol)
+    //console.log("verify is" , verifySol)
+    console.log(verifyType)
     console.log("verify END----");
   };
 
@@ -77,10 +87,10 @@ const loadFunct = () => {
 
     //console.log(readyTable)
 
-    //console.log(flatToTable(mapFlat, lines));
-  });
+});
 
-  //console.log(mapFlat)
+console.log(flatToTable(mapFlat, lines));
+ 
 
   //console.log(mapFlat);
 };
