@@ -1,6 +1,13 @@
 const loadFunct = () => {
   const lines = 3;
 
+  let verifyType ={
+    horizontal: false,
+    vertical: false,
+    diagonal: false
+}
+
+
   // services
   const flatToTable = (array, line) => {
     let table = [];
@@ -23,15 +30,15 @@ const loadFunct = () => {
 
   const verifyer = (table, line) => {
     let verifySol = false;
-    let verifyType ={
+  /*   let verifyType ={
         horizontal: false,
         vertical: false,
         diagonal: false
-    }
+    } */
 
 // verify horizontal
     for (let i = 0; i < line; i++) {
-      console.log(table[i])             // this for I can see the table
+      //console.log(table[i])             // this for I can see the table
       if(verifyArray(table[i])) {
         verifyType.horizontal = true
         verifySol = true
@@ -67,12 +74,12 @@ const loadFunct = () => {
         verifyType.diagonal = true
     }
 
-    console.log("diag1 is" , diag1)
-    console.log("diag2 is" , diag2)
+    //console.log("diag1 is" , diag1)
+    //console.log("diag2 is" , diag2)
 
     //console.log("verify is" , verifySol)
-    console.log(verifyType)
-    console.log("verify END----");
+    //console.log(verifyType)
+    //console.log("verify END----");
   };
 
   // create tic-tac-Toe map
@@ -99,6 +106,8 @@ const loadFunct = () => {
     if ((iterator + 1) % 2 === 0) {
       player = "X";
     }
+
+    
     mapFlat[leftPlaces[random] - 1] = player;
 
     const readyTable = flatToTable(mapFlat, lines);
@@ -109,8 +118,8 @@ const loadFunct = () => {
 
 });
 
-console.log(flatToTable(mapFlat, lines));
- 
+console.table(flatToTable(mapFlat, lines));
+ console.log(verifyType)
 
   //console.log(mapFlat);
 };
