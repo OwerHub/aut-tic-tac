@@ -38,8 +38,6 @@ const loadFunct = () => {
       }
     }
 
-
-        //console.log("vertical")
     // verify vertical
     for (let index = 0; index < lines; index++) {
         const elementArray = table.map((line) => line[index])
@@ -49,6 +47,28 @@ const loadFunct = () => {
             verifyType.vertical = true
         }
     }
+
+    // verify diagonal
+
+    let diag1 = []
+    let diag2 = []
+    for (let index = 0; index < lines; index++) {
+       diag1.push(table[index][index])
+       diag2.push(table[index][lines-index-1])
+    }
+
+    if(verifyArray(diag1)){
+        verifySol = true
+        verifyType.diagonal = true
+    }
+
+    if(verifyArray(diag2)){
+        verifySol = true
+        verifyType.diagonal = true
+    }
+
+    console.log("diag1 is" , diag1)
+    console.log("diag2 is" , diag2)
 
     //console.log("verify is" , verifySol)
     console.log(verifyType)
